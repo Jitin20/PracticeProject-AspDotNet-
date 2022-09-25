@@ -1,0 +1,75 @@
+There are two types of app while creating VS2022, 
+
+Asp.net core web app – Without Model, View, Controller 
+
+Asp.net core web app(MVC)- With a basic structure for model, views and controller 
+
+ 
+
+Program class-> main function--> 
+
+Hostsetup-->CreatehostBuilder-setup app with defaultsby default app is hosted in own internal web server-->IIS EXPRESS 
+
+-->Startup class-->define configuration of app 
+
+-->Startup class- Define request handling pipeline, configure all services 
+
+2 methods-> Configre Services-->Called first: Register all the services 
+
+Asp.net is dependent on dependency injection 
+
+Ex myclass and log that wants to perform log, hence reference is to be done 
+
+This is called dependency, although interface can be made, but still tight coupling Is there, hence, defining in constructor parameter is doing good thing. By making a instance. 
+
+CONFIGURE METHOD:
+Request pipeline-> Hnadle incoming request-->produce response-->Chanied components-->Contains middleware components
+
+Whiel a request, a single req can go bw multiple comp that can alter same with reponse
+usedevexp: Useful info 
+statuscode: staust such as 400 200
+static file
+useEndPoints: Routing system
+
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Dept}/{action=List}/{id?}"
+                    );
+            });
+
+            To map incoming request with a action on a controller
+
+
+            Model containes the data, everything we are goin to work with is model
+
+            Controllers: provide the login that we work
+            Has action methods, public method, data model
+            gets associated with url, associated mehtod will be linked
+
+            Views: Give a view to the methods
+            Uses razor called view engine
+
+            asp.net core- Foundation
+            asp.net core mvc- Ability to build web api and web app
+            Uses razor or blazor
+
+            Model- Domain data + Logic to maintain data
+            Interface- Contract- What repo can do initially
+
+           Goal_ Create loosely copuled 
+           services.AddScoped<IPieRepository, MockPieRepository>()
+
+           This means that we can from anywhere call the Ipierepository and we will get back a instantiated Mockpierepo
+           AddTransient:we as container get back new clean instance
+           AddSingleton: A single object created, we get back same instance
+           Addscoped: Once per request, one instance per http req, uses in same call same request
+
+           Controller: Respond to user action, Update the Database or the model
+It is nothing more than a clause, always inherited from the base calss called controller, always the controllers are suffixed with controller
+eg: HomeController, DeptController
+Always Returns a View();
+A Controller has a public action method which has ebcapsulated al the business logic, that returns a View at the end.-->
+This make sure the user see a web page
